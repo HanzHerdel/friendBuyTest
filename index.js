@@ -10,9 +10,8 @@ const NO_TRANSACTION = "NO TRANSACTION";
 function dataBase() {
   console.log("\n\n------------ In Memory DB ------------\n");
   
-  //uncomment to check engine status on every operation
-  //console.log("DB",DB,"transactions",transactions,"pointerDB",pointerDB,"nestedTransaction",nestedTransaction);
-  
+  // uncomment to check engine status on every operation
+  // console.log("DB",DB,"transactions",transactions,"pointerDB",pointerDB,"nestedTransaction",nestedTransaction);
 
   if (dbInterface) dbInterface.close();
 
@@ -138,8 +137,8 @@ const flatTransactionsToRigth = () => {
   let righFlaternDB = {};
   let indexDb = transactions.length;
   while (indexDb >= 0) {
-    indexDb--;
-    righFlaternDB = { ...transactions[indexDb], ...righFlaternDB };
+      righFlaternDB = { ...transactions[indexDb], ...righFlaternDB };
+      indexDb--;
   }
   righFlaternDB = { ...DB, ...righFlaternDB };
   return righFlaternDB;
@@ -156,11 +155,11 @@ const searchNameInDB = (name) => {
   if (existTransaction()) {
     let indexDb = transactions.length;
     while (dbWithValue === undefined && indexDb >= 0) {
-      indexDb--;
-      dbWithValue = transactions[indexDb]?.[name];
+        dbWithValue = transactions[indexDb]?.[name];
+        indexDb--;
     }
   }
-  return dbWithValue || DB[name];
+  return dbWithValue || dbWithValue === null ? dbWithValue : DB[name]
 };
 
 const existTransaction = () => nestedTransaction !== null;
