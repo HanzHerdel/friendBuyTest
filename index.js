@@ -32,17 +32,16 @@ function dataBase() {
             
             case 'NUMEQUALTO': numEqualTo(splitedInput[1]); break;
 
-
             case 'BEGIN' : beginTransaction(); break;
 
             case 'ROLLBACK' : rollBackTransaction(); break;
 
             case 'COMMIT' : commitTransaction(); break;
-
             
             case 'END': process.exit();  break;
             default: console.log("Invalid Command"); dataBase(); /* show menu again if input does not match */;
         }
+        dataBase()
     });
 }
 
@@ -53,25 +52,22 @@ const beginTransaction=()=>{
         nestedTransaction++
     transactions.push({...pointerDB})
     pointerDB=transactions[nestedTransaction]
-    dataBase()
 }
 
 const rollBackTransaction=()=>{
-    if(nestedTransaction===null) return dataBase()
+    if(nestedTransaction===null) return 
     if(nestedTransaction===0){
         clearTransactions
-        return dataBase()
+        return 
     }
     nestedTransaction--
     pointerDB=transactions[nestedTransaction]
     transactions.pop();
-    dataBase()
 }
 
 const commitTransaction=()=>{
     DB=transactions[nestedTransaction]
     clearTransactions()
-    dataBase()
 }
 
 const clearTransactions=()=>{
@@ -83,23 +79,19 @@ const clearTransactions=()=>{
 
 const set=(name,value)=>{
     pointerDB[name]=value;
-    dataBase()
 }
 
 const get=(name)=>{
     console.log('Result:', pointerDB[name] || 'NULL')
-    dataBase()
 }
 
 const unset=(name)=>{
     delete pointerDB[name]
-    dataBase()
 }
 
 const numEqualTo = (value)=>{
     const coincidences= Object.values(pointerDB).filter(v=>v==value).length 
-    console.log('Result:',coincidences)
-    dataBase()
+    console.log('Coincidences:',coincidences)
 }
 
 
