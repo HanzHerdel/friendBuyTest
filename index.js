@@ -5,19 +5,14 @@ let transactions = [];
 let nestedTransaction = null;
 let pointerDB = DB;
 const NO_TRANSACTION = "NO TRANSACTION";
+
 // Main
 function dataBase() {
-  console.log(
-    "\n\n------------ In Memory DB ------------\n",
-    "DB",
-    DB,
-    "transactions",
-    transactions,
-    "pointerDB",
-    pointerDB,
-    "nestedTransaction",
-    nestedTransaction
-  );
+  console.log("\n\n------------ In Memory DB ------------\n");
+  
+  //uncomment to check engine status on every operation
+  //console.log("DB",DB,"transactions",transactions,"pointerDB",pointerDB,"nestedTransaction",nestedTransaction);
+  
 
   if (dbInterface) dbInterface.close();
 
@@ -148,7 +143,6 @@ const flatTransactionsToRigth = () => {
     righFlaternDB = { ...transactions[indexDb], ...righFlaternDB };
   }
   righFlaternDB = { ...DB, ...righFlaternDB };
-  console.log('righFlaternDB: ', righFlaternDB);
   return righFlaternDB;
 };
 
