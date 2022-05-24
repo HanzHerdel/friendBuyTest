@@ -59,7 +59,6 @@ function dataBase() {
 
         default:
           console.log("Invalid Command");
-          dataBase(); /* show menu again if input does not match */
       }
       dataBase();
     }
